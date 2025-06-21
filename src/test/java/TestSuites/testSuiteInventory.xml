@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="RegressionAutomatedQA" paralel="tests" thread-count="3">
+
+<test name="TC01_Login_Error">
+        <classes>
+            <class name = "TestCasesPOM.TC01_Login_Error"/>
+        </classes>
+</test>
+
+    <test name="TC02_Validate_Add_To_Cart">
+        <classes>
+            <class name = "TestCasesPOM.TC02_Validate_Add_To_Cart"/>
+        </classes>
+    </test>
+
+
+    <test name="TC02_Validate_Remove_Button">
+        <classes>
+            <class name = "TestCasesPOM.TC03_Validate_Remove_Button"/>
+        </classes>
+    </test>
+
+
+
+</suite>
