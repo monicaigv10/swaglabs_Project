@@ -17,8 +17,14 @@ public class CartPage extends BaseClass {
         @FindBy(xpath = "//*[contains(text(),'CHECKOUT')]")
         private WebElement checkoutButton;
 
-        @FindBy(xpath = "//*[contains(text(),'CONTINUE SHOPPING')]")
-        private WebElement continueShoppingButton;
+        //@FindBy(xpath = "//*[contains(text(),'CONTINUE SHOPPING')]")
+        //private WebElement continueShoppingButton;
+
+        @FindBy(xpath = "//*[@class= 'btn_secondary']")
+        private WebElement continueShoppingBtn;
+
+        @FindBy(xpath = "//*[contains(text(),'Sauce Labs Bike Light')]")
+        private WebElement secondItemText;
 
 
         //Methods of Cart page
@@ -27,6 +33,8 @@ public class CartPage extends BaseClass {
         }
 
         public void clickContinueShoppingButton(){
-            click(continueShoppingButton);
+            click(continueShoppingBtn);
         }
+
+        public boolean verifySecondItemText(){ return secondItemText.isDisplayed(); }
 }

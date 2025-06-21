@@ -22,6 +22,12 @@ public class InventoryPage extends BaseClass {
     @FindBy(xpath = "//*[@class = 'shopping_cart_link fa-layers fa-fw']")
     private WebElement shoppingCartIcon;
 
+    @FindBy(xpath = "//*[contains(text(),'Open Menu')]")
+    private WebElement menuBtn;
+
+    @FindBy(id = "about_sidebar_link")
+    private WebElement aboutMenu;
+
     //here goes the methods and web elements that interact with the flow
     public boolean verifyAddToCartBtn(){
         return isDisplayed(addToCartButton);
@@ -39,5 +45,13 @@ public class InventoryPage extends BaseClass {
         click(shoppingCartIcon);
     }
 
-    //@FindBy()
+    public void clickMenu(){
+        click(menuBtn);
+    }
+
+    public void clickAboutMenu(){
+        click(aboutMenu);
+    }
+
+
 }

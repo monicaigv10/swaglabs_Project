@@ -3,6 +3,7 @@ package TestCasesPOM;
 import PageObjects.CartPage;
 import PageObjects.InventoryPage;
 import PageObjects.LoginPage;
+import PageObjects.SauceLabsPage;
 import Utils.BaseClass;
 import Utils.GlobalVariables;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class TC05_Validate_Two_Items_in_Cart {
+public class TC06_Validate_About_Page_Text {
+
 
     //Declare e intialize webdriver
     WebDriver driver = BaseClass.setupDriver();
@@ -19,7 +21,7 @@ public class TC05_Validate_Two_Items_in_Cart {
     //PageObject
     LoginPage loginPage = new LoginPage(driver);
     InventoryPage inventoryPage = new InventoryPage(driver);
-    CartPage cartPage = new CartPage(driver);
+    SauceLabsPage sauceLabsPage = new SauceLabsPage(driver);
 
     @BeforeTest
     public void startWebDriver(){
@@ -27,32 +29,23 @@ public class TC05_Validate_Two_Items_in_Cart {
     }
 
     @Test
-    public void TC05(){
+    public void TC06(){
         //Step 1: Login
         loginPage.login(GlobalVariables.STANDARD_USER,GlobalVariables.GLOBAL_PWD);
 
-        //Step 2: Add 1 item to cart
-        inventoryPage.clickAddToCartButton();
+        //Step 2: Click on Menu
+        inventoryPage.clickMenu();
 
+        //Step 3: Click on About
+        inventoryPage.clickAboutMenu();
 
-        //Step 3: Go to Shopping cart and click on continue to shopping
-        inventoryPage.clickShoppingCart();
-        cartPage.clickContinueShoppingButton();
+        //Step 4: Verify text: Build apps users love with AI-driven insights
+        Assert.assertTrue(sauceLabsPage.aboutPageTextIsDisplayed());
 
-
-        //Step 4: Add a second item to cart
-        inventoryPage.clickAddToCartButton();
-
-
-        //Step5: Verify text of second item (use xpath)
-        inventoryPage.clickShoppingCart();
-        Assert.assertTrue(cartPage.verifySecondItemText());
     }
 
     @AfterTest
-    public void closeDriver() {
+    public void closeDriver(){
         BaseClass.quitDriver(driver);
     }
-
-
 }
